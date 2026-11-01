@@ -1,0 +1,53 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Read-only token; no secrets are used anywhere in this workflow. Scenarios that need a credential never run
+# in CI: the vault only reaches a run through bws run on the test machine.
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Actions pinned by commit SHA; the tag is in the comment.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "22"
+      - name: Workflow policy
+        # Reads every workflow as YAML: each uses pinned to a 40-hex SHA, no PR-target trigger in any form of on,
+        # no reference to the repository's stored credentials. PyYAML is installed by hash only (ci-requirements.txt).
+        run: |
+          python3 -m pip install --quiet --require-hashes --no-deps --only-binary :all: -r scripts/ci-requirements.txt
+          python3 -I scripts/check_workflows.py --self-test
+          python3 -I scripts/check_workflows.py
+      - name: Check skills
+        run: python3 scripts/validate.py
+      - name: Validator self-test
+        # Offline: local servers only. A docs link that redirects outside the docs fails and is never followed.
+        run: python3 -I scripts/validate.py --self-test
+      - name: Scenario runner self-test
+        # Fake clients and a fake API only: no login, no scenario variable, no network beyond localhost.
+        run: python3 -I scripts/run-scenario.py --self-test
+      - name: Check docs links
+        run: python3 scripts/validate.py --online
+      - name: Signature verifier self-tests
+        run: |
+          python3 -I skills/omni-core/scripts/verify_signature.py
+          node skills/omni-core/scripts/verify_signature.js
