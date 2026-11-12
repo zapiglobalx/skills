@@ -47,6 +47,7 @@ Version 1.2.0. Every skill links each endpoint, field and limit to its official 
 | [`omni-choose-connection`](skills/omni-choose-connection/SKILL.md) | Choosing the Omni channel before creating it: official WhatsApp (Cloud API or coexistence) or QR code, Instagram, Messenger or Telegram, what each needs, costs and cannot do |
 | [`omni-security-hardening`](skills/omni-security-hardening/SKILL.md) | Securing an Omni integration and workspace: Secret Key and leaks, IP restriction, roles, two-factor login, audit log, webhook signing secrets, letting an AI in through MCP, and a code review checklist |
 | [`omni-reliability`](skills/omni-reliability/SKILL.md) | Keeping an Omni integration up in production: webhook retries, duplicates, order and downtime; channel disconnection reasons, billing and Meta restriction notices on the global webhook; sending without duplicates; what to alert on |
+| [`omni-troubleshooting`](skills/omni-troubleshooting/SKILL.md) | Finding out why something in Omni does not work: refused calls, undelivered messages, status events, channel rules, template rejections and category changes, webhooks that stop receiving or verifying, and what to send support |
 
 Coming next: chatbot on Omni; Omni with n8n, HubSpot and HighLevel; migrating to Omni from other WhatsApp API providers besides WAHA and Evolution API.
 
@@ -68,6 +69,7 @@ Skills read credentials from environment variables and never write them into cod
 | `omni-choose-connection` | none: it makes no API call |
 | `omni-security-hardening` | none: every control is changed in the Omni panel |
 | `omni-reliability` | `OMNI_SECRET_KEY`; the webhook secret on the receiver |
+| `omni-troubleshooting` | `OMNI_SECRET_KEY` for the read-only checks |
 
 No skill routes traffic through a third-party service: the agent communicates directly with the Z-API API.
 
@@ -81,7 +83,7 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md). Every new skill includes an official do
 
 ## Summary
 
-Install with `npx skills add zapiglobalx/skills`. Fifteen skills, version 1.2.0: `zapi-core`, `zapi-instance`, `zapi-send-messages` and `zapi-webhooks` for the classic Z-API (`api.z-api.io`); `omni-core`, `omni-messages`, `omni-templates`, `omni-onboarding`, `omni-flows`, `omni-choose-connection`, `omni-security-hardening` and `omni-reliability` for Z-API Omni (`api.omni.z-api.io`); `omni-migration-from-z-api` to move from one to the other; `omni-migration-from-waha` and `omni-migration-from-evolution-api` to move from those self-hosted APIs to Omni. Every claim in a skill links to the official docs, every skill ships test scenarios, and no skill routes your traffic through a third party. Credentials come from environment variables only. Security issues: see [SECURITY.md](SECURITY.md). Licensed under Apache-2.0.
+Install with `npx skills add zapiglobalx/skills`. Sixteen skills, version 1.2.0: `zapi-core`, `zapi-instance`, `zapi-send-messages` and `zapi-webhooks` for the classic Z-API (`api.z-api.io`); `omni-core`, `omni-messages`, `omni-templates`, `omni-onboarding`, `omni-flows`, `omni-choose-connection`, `omni-security-hardening`, `omni-reliability` and `omni-troubleshooting` for Z-API Omni (`api.omni.z-api.io`); `omni-migration-from-z-api` to move from one to the other; `omni-migration-from-waha` and `omni-migration-from-evolution-api` to move from those self-hosted APIs to Omni. Every claim in a skill links to the official docs, every skill ships test scenarios, and no skill routes your traffic through a third party. Credentials come from environment variables only. Security issues: see [SECURITY.md](SECURITY.md). Licensed under Apache-2.0.
 
 ## Trademarks
 
