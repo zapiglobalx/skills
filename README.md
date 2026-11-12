@@ -50,6 +50,7 @@ Version 1.2.0. Every skill links each endpoint, field and limit to its official 
 | [`omni-troubleshooting`](skills/omni-troubleshooting/SKILL.md) | Finding out why something in Omni does not work: refused calls, undelivered messages, status events, channel rules, template rejections and category changes, webhooks that stop receiving or verifying, and what to send support |
 | [`omni-instagram`](skills/omni-instagram/SKILL.md) | Instagram Direct on Omni: which accounts can connect, the username as recipient, text and media limits, unsupported types and what to send instead, the 24-hour window and the human agent tag, no templates, adding Instagram to a WhatsApp bot |
 | [`omni-otp-verification`](skills/omni-otp-verification/SKILL.md) | Verification codes on official WhatsApp: the AUTHENTICATION template (copy code, one-tap, zero-tap, expiry, send TTL), sending a fresh code, and a safe verify side (hashing, expiry, attempts, resend and abuse limits) |
+| [`omni-marketing-campaigns`](skills/omni-marketing-campaigns/SKILL.md) | WhatsApp marketing campaigns on the official connection: opt-in and opt-out, choosing the template model (coupon, limited-time offer, carousel, products), Meta's cost, sending to a list in batches without duplicates, stopping on restrictions, measuring clicks |
 
 Coming next: chatbot on Omni; Omni with n8n, HubSpot and HighLevel; migrating to Omni from other WhatsApp API providers besides WAHA and Evolution API.
 
@@ -74,6 +75,7 @@ Skills read credentials from environment variables and never write them into cod
 | `omni-troubleshooting` | `OMNI_SECRET_KEY` for the read-only checks |
 | `omni-instagram` | `OMNI_SECRET_KEY` |
 | `omni-otp-verification` | `OMNI_SECRET_KEY`; a secret of the user's app to hash codes |
+| `omni-marketing-campaigns` | `OMNI_SECRET_KEY` |
 
 No skill routes traffic through a third-party service: the agent communicates directly with the Z-API API.
 
@@ -87,7 +89,7 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md). Every new skill includes an official do
 
 ## Summary
 
-Install with `npx skills add zapiglobalx/skills`. Eighteen skills, version 1.2.0: `zapi-core`, `zapi-instance`, `zapi-send-messages` and `zapi-webhooks` for the classic Z-API (`api.z-api.io`); `omni-core`, `omni-messages`, `omni-templates`, `omni-onboarding`, `omni-flows`, `omni-choose-connection`, `omni-security-hardening`, `omni-reliability`, `omni-troubleshooting`, `omni-instagram` and `omni-otp-verification` for Z-API Omni (`api.omni.z-api.io`); `omni-migration-from-z-api` to move from one to the other; `omni-migration-from-waha` and `omni-migration-from-evolution-api` to move from those self-hosted APIs to Omni. Every claim in a skill links to the official docs, every skill ships test scenarios, and no skill routes your traffic through a third party. Credentials come from environment variables only. Security issues: see [SECURITY.md](SECURITY.md). Licensed under Apache-2.0.
+Install with `npx skills add zapiglobalx/skills`. Nineteen skills, version 1.2.0: `zapi-core`, `zapi-instance`, `zapi-send-messages` and `zapi-webhooks` for the classic Z-API (`api.z-api.io`); `omni-core`, `omni-messages`, `omni-templates`, `omni-onboarding`, `omni-flows`, `omni-choose-connection`, `omni-security-hardening`, `omni-reliability`, `omni-troubleshooting`, `omni-instagram`, `omni-otp-verification` and `omni-marketing-campaigns` for Z-API Omni (`api.omni.z-api.io`); `omni-migration-from-z-api` to move from one to the other; `omni-migration-from-waha` and `omni-migration-from-evolution-api` to move from those self-hosted APIs to Omni. Every claim in a skill links to the official docs, every skill ships test scenarios, and no skill routes your traffic through a third party. Credentials come from environment variables only. Security issues: see [SECURITY.md](SECURITY.md). Licensed under Apache-2.0.
 
 ## Trademarks
 
