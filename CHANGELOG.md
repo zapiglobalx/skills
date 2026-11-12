@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.0
+
+- `omni-choose-connection`: asks who writes first, where the customers are, which number and which features, then recommends the Omni channel or mix of channels (official WhatsApp with Cloud API or coexistence, QR code, Instagram, Messenger, Telegram), with what each needs, costs on Meta's side and cannot do, and hands off to `omni-onboarding`. Makes no API call. Flags where the conversation-window and billing pages disagree.
+- 11 test scenarios in `tests/omni-choose-connection.md`, none with credentials.
+
 ## 1.1.0
 
 Two new skills for moving to Z-API Omni from self-hosted WhatsApp APIs. Both ask which channel the user wants: the QR code channel (`Z_API_WHATSAPP`, the same model as WAHA and Baileys, no window or templates) or official WhatsApp (`META_WHATSAPP`).

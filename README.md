@@ -28,7 +28,7 @@ npx skills add zapiglobalx/skills --skill zapi-send-messages
 
 ## Catalog
 
-Version 1.1.0. Every skill links each endpoint, field and limit to its official page, and ships test scenarios in `tests/<name>.md`.
+Version 1.2.0. Every skill links each endpoint, field and limit to its official page, and ships test scenarios in `tests/<name>.md`.
 
 | Skill | What it teaches |
 | --- | --- |
@@ -44,6 +44,7 @@ Version 1.1.0. Every skill links each endpoint, field and limit to its official 
 | [`omni-migration-from-evolution-api`](skills/omni-migration-from-evolution-api/SKILL.md) | Inventory of the Evolution API calls, webhooks and built-in integrations (Chatwoot, Typebot), instances to channels, send routes, `remoteJid`, `messages.upsert` fields, `webhookByEvents` and `apikey` checks, QR code channel or official WhatsApp for Baileys and Cloud API numbers, cutover and rollback |
 | [`omni-onboarding`](skills/omni-onboarding/SKILL.md) | Creating and connecting Omni channels: official WhatsApp through Embedded Signup, Cloud API or coexistence, moving a number from another provider, QR code, Instagram, Messenger and Telegram, the SDK and its allowed domains |
 | [`omni-flows`](skills/omni-flows/SKILL.md) | WhatsApp Flows on the WABA: building the flow_json, creating, validating, fixing, publishing, replacing, deprecating and deleting a Flow |
+| [`omni-choose-connection`](skills/omni-choose-connection/SKILL.md) | Choosing the Omni channel before creating it: official WhatsApp (Cloud API or coexistence) or QR code, Instagram, Messenger or Telegram, what each needs, costs and cannot do |
 
 Coming next: chatbot on Omni; Omni with n8n, HubSpot and HighLevel; migrating to Omni from other WhatsApp API providers besides WAHA and Evolution API.
 
@@ -62,6 +63,7 @@ Skills read credentials from environment variables and never write them into cod
 | `omni-migration-from-waha`, `omni-migration-from-evolution-api` | the Omni variables above; they read the WAHA or Evolution code and never call those servers |
 | `omni-onboarding` | the Omni Secret Key on the backend and the Public Key in the connection SDK; a Telegram bot token when connecting Telegram |
 | `omni-flows` | `OMNI_SECRET_KEY` |
+| `omni-choose-connection` | none: it makes no API call |
 
 No skill routes traffic through a third-party service: the agent communicates directly with the Z-API API.
 
@@ -75,7 +77,7 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md). Every new skill includes an official do
 
 ## Summary
 
-Install with `npx skills add zapiglobalx/skills`. Twelve skills, version 1.1.0: `zapi-core`, `zapi-instance`, `zapi-send-messages` and `zapi-webhooks` for the classic Z-API (`api.z-api.io`); `omni-core`, `omni-messages`, `omni-templates`, `omni-onboarding` and `omni-flows` for Z-API Omni (`api.omni.z-api.io`); `omni-migration-from-z-api` to move from one to the other; `omni-migration-from-waha` and `omni-migration-from-evolution-api` to move from those self-hosted APIs to Omni. Every claim in a skill links to the official docs, every skill ships test scenarios, and no skill routes your traffic through a third party. Credentials come from environment variables only. Security issues: see [SECURITY.md](SECURITY.md). Licensed under Apache-2.0.
+Install with `npx skills add zapiglobalx/skills`. Thirteen skills, version 1.2.0: `zapi-core`, `zapi-instance`, `zapi-send-messages` and `zapi-webhooks` for the classic Z-API (`api.z-api.io`); `omni-core`, `omni-messages`, `omni-templates`, `omni-onboarding`, `omni-flows` and `omni-choose-connection` for Z-API Omni (`api.omni.z-api.io`); `omni-migration-from-z-api` to move from one to the other; `omni-migration-from-waha` and `omni-migration-from-evolution-api` to move from those self-hosted APIs to Omni. Every claim in a skill links to the official docs, every skill ships test scenarios, and no skill routes your traffic through a third party. Credentials come from environment variables only. Security issues: see [SECURITY.md](SECURITY.md). Licensed under Apache-2.0.
 
 ## Trademarks
 
