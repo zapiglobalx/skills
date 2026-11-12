@@ -3,7 +3,8 @@
 ## 1.2.0
 
 - `omni-choose-connection`: asks who writes first, where the customers are, which number and which features, then recommends the Omni channel or mix of channels (official WhatsApp with Cloud API or coexistence, QR code, Instagram, Messenger, Telegram), with what each needs, costs on Meta's side and cannot do, and hands off to `omni-onboarding`. Makes no API call. Flags where the conversation-window and billing pages disagree.
-- 11 test scenarios in `tests/omni-choose-connection.md`, none with credentials.
+- `omni-security-hardening`: the Omni panel's security controls (credentials, IP restriction, SDK domains, two-factor login, roles, audit log, webhook signing, MCP rules), who can change each one, what breaks when it is turned on and the order to apply them; what to do after a Secret Key leak; a code review checklist.
+- Test scenarios: 11 in `tests/omni-choose-connection.md` and 12 in `tests/omni-security-hardening.md`, none with credentials.
 
 ## 1.1.0
 
