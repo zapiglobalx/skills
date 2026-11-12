@@ -6,7 +6,8 @@
 - `omni-security-hardening`: the Omni panel's security controls (credentials, IP restriction, SDK domains, two-factor login, roles, audit log, webhook signing, MCP rules), who can change each one, what breaks when it is turned on and the order to apply them; what to do after a Secret Key leak; a code review checklist.
 - `omni-reliability`: Omni's webhook delivery rules (5-second timeout, 7 attempts over 23 hours, delivery headers, order, alerts) turned into a receiver that answers fast and deduplicates; `CHANNEL_DISCONNECTED` with its reason codes, the `BILLING_*` events and `ACCOUNT_RESTRICTION` on the global webhook; sending without duplicates; what to alert on.
 - `omni-troubleshooting`: a fixed order of checks (API answer, channel state, status events, channel rules, template, webhook) with the documented causes for each symptom, and what to collect for support.
-- Test scenarios: 11 in `tests/omni-choose-connection.md` and 12 in `tests/omni-security-hardening.md` (no credentials); 11 in `tests/omni-reliability.md` and 12 in `tests/omni-troubleshooting.md` (one each reads the test channel).
+- `omni-instagram`: account requirements, the username as recipient, the 1000-byte text limit and media limits, unsupported types and their replacements, the 24-hour window and the 7-day human agent tag, no templates or writing first, and adding Instagram to a WhatsApp bot.
+- Test scenarios: 11 in `tests/omni-choose-connection.md`, 12 in `tests/omni-security-hardening.md` and 10 in `tests/omni-instagram.md` (no credentials); 11 in `tests/omni-reliability.md` and 12 in `tests/omni-troubleshooting.md` (one each reads the test channel).
 
 ## 1.1.0
 
