@@ -2,7 +2,7 @@
 
 Read this after the inventory: one row per Z-API route the code calls. "Layer" is the compatibility layer at `https://zapi.omni.z-api.io/channels/{channelId}/token/{channelToken}`; "Native" is `https://api.omni.z-api.io`. Checked against the docs on 2026-10-19; if a page now says otherwise, the page wins.
 
-Sources: the layer's [OpenAPI](https://developer.omni.z-api.io/pt/z-api/openapi.json) (16 routes), [reply message](https://developer.omni.z-api.io/z-api/messages/reply-message.md), [limitations of the official API](https://developer.omni.z-api.io/z-api/limitations.md), native [message types](https://developer.omni.z-api.io/messages/introduction.md).
+Sources: the layer's [message pages](https://developer.omni.z-api.io/z-api/messages/introduction.md) (16 send routes), [reply message](https://developer.omni.z-api.io/z-api/messages/reply-message.md), [limitations of the official API](https://developer.omni.z-api.io/z-api/limitations.md), native [message types](https://developer.omni.z-api.io/messages/introduction.md).
 
 ## Sending
 
