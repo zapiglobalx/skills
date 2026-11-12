@@ -36,6 +36,7 @@ Version 1.2.0. Every skill links each endpoint, field and limit to its official 
 | [`zapi-instance`](skills/zapi-instance/SKILL.md) | Connecting and reconnecting, QR code and phone code, passkey and Z-API Conector, instance and device data, settings (name, photo, auto-read, calls, queue) |
 | [`zapi-send-messages`](skills/zapi-send-messages/SKILL.md) | Text, image, audio, video, document, link, location, contact, reaction; reply, forward, edit, delete, pin, mark as read; `@lid`, formats, delays and responsible-sending rules |
 | [`zapi-webhooks`](skills/zapi-webhooks/SKILL.md) | Every webhook type, configuration endpoints, filters, payloads, and treating end-user text as data |
+| [`zapi-partner-instances`](skills/zapi-partner-instances/SKILL.md) | For Z-API integrator partners: creating, subscribing, listing, canceling and deleting customers' instances, calls, proxy and its failure webhook, the connection SDK inside the partner's product, and the post-paid cycle |
 | [`omni-core`](skills/omni-core/SKILL.md) | Secret Key, channels, sending, the 24-hour window and templates, webhooks, and HMAC verification. Read first for any Omni task |
 | [`omni-messages`](skills/omni-messages/SKILL.md) | Free-form messages per channel: accepted types on each channel, the 24-hour window on official WhatsApp, delivery confirmation by webhook, cost |
 | [`omni-templates`](skills/omni-templates/SKILL.md) | WABAs, template models, categories and cost, approval and its webhook, validation rules with error codes, sending with parameters |
@@ -62,6 +63,7 @@ Skills read credentials from environment variables and never write them into cod
 | --- | --- |
 | `zapi-core`, `zapi-instance`, `zapi-send-messages` | `ZAPI_INSTANCE_ID`, `ZAPI_TOKEN`, `ZAPI_CLIENT_TOKEN` |
 | `zapi-webhooks` | the three above, plus `ZAPI_WEBHOOK_PATH_SECRET` (the secret in your webhook path) |
+| `zapi-partner-instances` | `ZAPI_PARTNER_TOKEN` for partner routes; `ZAPI_CLIENT_TOKEN` and each instance's ID and token for the SDK token |
 | `omni-core` | `OMNI_SECRET_KEY`, `OMNI_CHANNEL_ID`, `OMNI_WEBHOOK_SECRET` |
 | `omni-messages` | `OMNI_SECRET_KEY`, `OMNI_CHANNEL_ID` |
 | `omni-templates` | `OMNI_SECRET_KEY` |
@@ -89,7 +91,7 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md). Every new skill includes an official do
 
 ## Summary
 
-Install with `npx skills add zapiglobalx/skills`. Nineteen skills, version 1.2.0: `zapi-core`, `zapi-instance`, `zapi-send-messages` and `zapi-webhooks` for the classic Z-API (`api.z-api.io`); `omni-core`, `omni-messages`, `omni-templates`, `omni-onboarding`, `omni-flows`, `omni-choose-connection`, `omni-security-hardening`, `omni-reliability`, `omni-troubleshooting`, `omni-instagram`, `omni-otp-verification` and `omni-marketing-campaigns` for Z-API Omni (`api.omni.z-api.io`); `omni-migration-from-z-api` to move from one to the other; `omni-migration-from-waha` and `omni-migration-from-evolution-api` to move from those self-hosted APIs to Omni. Every claim in a skill links to the official docs, every skill ships test scenarios, and no skill routes your traffic through a third party. Credentials come from environment variables only. Security issues: see [SECURITY.md](SECURITY.md). Licensed under Apache-2.0.
+Install with `npx skills add zapiglobalx/skills`. Twenty skills, version 1.2.0: `zapi-core`, `zapi-instance`, `zapi-send-messages`, `zapi-webhooks` and `zapi-partner-instances` for the classic Z-API (`api.z-api.io`); `omni-core`, `omni-messages`, `omni-templates`, `omni-onboarding`, `omni-flows`, `omni-choose-connection`, `omni-security-hardening`, `omni-reliability`, `omni-troubleshooting`, `omni-instagram`, `omni-otp-verification` and `omni-marketing-campaigns` for Z-API Omni (`api.omni.z-api.io`); `omni-migration-from-z-api` to move from one to the other; `omni-migration-from-waha` and `omni-migration-from-evolution-api` to move from those self-hosted APIs to Omni. Every claim in a skill links to the official docs, every skill ships test scenarios, and no skill routes your traffic through a third party. Credentials come from environment variables only. Security issues: see [SECURITY.md](SECURITY.md). Licensed under Apache-2.0.
 
 ## Trademarks
 
