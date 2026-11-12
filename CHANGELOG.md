@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.0
+
+Two new skills for moving to Z-API Omni from self-hosted WhatsApp APIs. Both ask which channel the user wants: the QR code channel (`Z_API_WHATSAPP`, the same model as WAHA and Baileys, no window or templates) or official WhatsApp (`META_WHATSAPP`).
+
+- `omni-migration-from-waha`: inventory of WAHA routes, events and handlers; sessions to channels; send routes to `content.type`; `@c.us`, `@g.us` and `@lid`; webhook events and payload fields; WAHA's SHA-512 body HMAC to Omni's five-field HMAC-SHA256; retries, order and deduplication; number by the QR code channel, coexistence or Cloud API (the WAHA session drops when coexistence connects); cutover and rollback.
+- `omni-migration-from-evolution-api`: inventory of Evolution API v2 routes, webhooks, event transports and built-in integrations; `WHATSAPP-BAILEYS` versus `WHATSAPP-BUSINESS`; send routes to `content.type`; `messages.upsert` fields; `webhookByEvents`, `webhookBase64` and the `apikey` body check; Chatwoot, Typebot and other bots; number by the QR code channel, coexistence, Cloud API or number migration; cutover, rollback and key rotation.
+- 14 test scenarios each in `tests/`, with fixtures for the code inventory, the call rewrite and a webhook that tries to make the agent reveal keys.
+
 ## 1.0.0
 
 First complete release: 10 skills, every claim linked to the official documentation, test scenarios in `tests/` and the harness that runs them confined.
