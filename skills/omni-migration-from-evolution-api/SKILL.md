@@ -21,8 +21,9 @@ Evolution API is a self-hosted server that runs WhatsApp instances, either throu
 | Omni channel `type` | What it is | What changes from Evolution |
 |---|---|---|
 | `Z_API_WHATSAPP` | WhatsApp Web by QR code, the same model as a `WHATSAPP-BAILEYS` instance ([connect WhatsApp Web](https://developer.omni.z-api.io/connect/whatsapp-web.md)) | Smallest change for a Baileys instance. Same number, personal or Business app; no Meta approval; no 24-hour window and no templates; polls, location and contact are supported. The phone must keep its session, and the docs point to the official API for lower block risk |
-| `META_WHATSAPP` | WhatsApp through the official Meta API ([connect Meta WhatsApp](https://developer.omni.z-api.io/connect/meta-whatsapp.md)); the natural target for a `WHATSAPP-BUSINESS` instance | Free-form messages only inside the 24-hour window opened by the customer; outside it only a Meta-approved template, charged by Meta ([24-hour window](https://developer.omni.z-api.io/whatsapp-official/24h-window.md), [billing](https://developer.omni.z-api.io/whatsapp-official/billing.md)). Groups, polls, edit, delete, forward, contacts, chats and labels are not supported ([limitations of the official API](https://developer.omni.z-api.io/z-api/limitations.md)) |
+| `META_WHATSAPP` | WhatsApp through the official Meta API ([connect Meta WhatsApp](https://developer.omni.z-api.io/connect/meta-whatsapp.md)); the natural target for a `WHATSAPP-BUSINESS` instance | Free-form messages only inside the 24-hour window opened by the customer; outside it only a Meta-approved template, charged by Meta ([24-hour window](https://developer.omni.z-api.io/whatsapp-official/24h-window.md), [billing](https://developer.omni.z-api.io/whatsapp-official/billing.md)). Polls are not supported, a sent message cannot be deleted on any channel, and no Omni route is documented for groups, edit, forward, contacts, chats or labels ([message support](https://developer.omni.z-api.io/channels/message-support.md)) |
 
+- **What each channel accepts comes from [message support](https://developer.omni.z-api.io/channels/message-support.md).** The older Z-API limitations page is no longer in the Omni docs (checked 2026-11-12); do not cite it.
 - **On the QR code channel, check each feature before promising it.** Its page lists polls, location and contact as supported and says nothing about groups, status, edit, delete, forward or labels. The native send endpoint has no route for those either. Treat them as not available unless a page says otherwise.
 - If the integration depends on groups or status posts, say so before writing code: there is no documented Omni route for them on either channel. On `META_WHATSAPP`, messaging people who never wrote first also needs templates. Both are product decisions, not code changes.
 - Omni credentials come from `omni-core`. The user creates them in the Omni panel, never in the chat.
@@ -210,7 +211,7 @@ The connection runs in the browser through the connection SDK: `getQRCode` for t
 - https://developer.omni.z-api.io/whatsapp-official/connection/coexistence.md
 - https://developer.omni.z-api.io/whatsapp-official/connection/cloud-api.md
 - https://developer.omni.z-api.io/whatsapp-official/migrate-number.md
-- https://developer.omni.z-api.io/z-api/limitations.md
+- https://developer.omni.z-api.io/channels/message-support.md
 - https://developer.omni.z-api.io/webhooks/create-webhook.md
 - https://developer.omni.z-api.io/webhooks/channel-webhooks.md
 - https://developer.omni.z-api.io/webhooks/payloads.md
