@@ -7,7 +7,8 @@
 - `omni-reliability`: Omni's webhook delivery rules (5-second timeout, 7 attempts over 23 hours, delivery headers, order, alerts) turned into a receiver that answers fast and deduplicates; `CHANNEL_DISCONNECTED` with its reason codes, the `BILLING_*` events and `ACCOUNT_RESTRICTION` on the global webhook; sending without duplicates; what to alert on.
 - `omni-troubleshooting`: a fixed order of checks (API answer, channel state, status events, channel rules, template, webhook) with the documented causes for each symptom, and what to collect for support.
 - `omni-instagram`: account requirements, the username as recipient, the 1000-byte text limit and media limits, unsupported types and their replacements, the 24-hour window and the 7-day human agent tag, no templates or writing first, and adding Instagram to a WhatsApp bot.
-- Test scenarios: 11 in `tests/omni-choose-connection.md`, 12 in `tests/omni-security-hardening.md` and 10 in `tests/omni-instagram.md` (no credentials); 11 in `tests/omni-reliability.md` and 12 in `tests/omni-troubleshooting.md` (one each reads the test channel).
+- `omni-otp-verification`: the AUTHENTICATION template (copy code, one-tap, zero-tap, expiry, security notice, send TTL and what Meta refuses), sending a fresh code in body and button, and the verify side: generation, hashing, expiry, attempts, resend caps and number-pumping limits.
+- Test scenarios: 11 in `tests/omni-choose-connection.md`, 12 in `tests/omni-security-hardening.md`, 10 in `tests/omni-instagram.md` and 9 in `tests/omni-otp-verification.md` (no credentials); 11 in `tests/omni-reliability.md` and 12 in `tests/omni-troubleshooting.md` (one each reads the test channel).
 
 ## 1.1.0
 
