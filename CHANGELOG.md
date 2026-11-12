@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0
+
+The Omni docs no longer describe the Z-API compatibility layer (`zapi.omni.z-api.io`): on 2026-11-12 the index lists no `z-api/` page, and those URLs, including the Z-API limitations page, open the general introduction.
+
+- `omni-migration-from-z-api` 1.1.0: the migration targets the native API only. Every Z-API route maps to a native `content.type` or to "no equivalent"; channel support comes from the message support page; the layer stays only as a warning for code that already calls it (confirm with Omni support, then move to native). `OMNI_CHANNEL_TOKEN` is no longer needed; webhook creation no longer claims the ENTERPRISE role. Scenarios 3, 4 and 12 now cover the native path.
+- `omni-core` 1.0.1: "Coming from the classic Z-API" points to `omni-migration-from-z-api` instead of the removed compatibility page.
+
 ## 1.1.0
 
 Two new skills for moving to Z-API Omni from self-hosted WhatsApp APIs. Both ask which channel the user wants: the QR code channel (`Z_API_WHATSAPP`, the same model as WAHA and Baileys, no window or templates) or official WhatsApp (`META_WHATSAPP`).
