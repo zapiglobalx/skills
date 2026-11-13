@@ -1,45 +1,45 @@
 # Z-API routes on Z-API Omni
 
-Read this after the inventory: one row per Z-API route the code calls. "Layer" is the compatibility layer at `https://zapi.omni.z-api.io/channels/{channelId}/token/{channelToken}`; "Native" is `https://api.omni.z-api.io`. Checked against the docs on 2026-10-19; if a page now says otherwise, the page wins.
+Read this after the inventory: one row per Z-API route the code calls. Every Omni row is the native API at `https://api.omni.z-api.io`. Checked against the docs on 2026-11-12; if a page now says otherwise, the page wins.
 
-Sources: the layer's [message pages](https://developer.omni.z-api.io/z-api/messages/introduction.md) (16 send routes), [reply message](https://developer.omni.z-api.io/z-api/messages/reply-message.md), [limitations of the official API](https://developer.omni.z-api.io/z-api/limitations.md), native [message types](https://developer.omni.z-api.io/messages/introduction.md).
+Sources: native [message types](https://developer.omni.z-api.io/messages/introduction.md), [message support](https://developer.omni.z-api.io/channels/message-support.md) (what each channel accepts, with a WhatsApp Web column for the QR code channel), [create webhook](https://developer.omni.z-api.io/webhooks/create-webhook.md). The Z-API compatibility-layer pages (`z-api/...`) and the Z-API limitations page are no longer in the Omni docs: do not cite them.
 
 ## Sending
 
-All layer routes keep the Z-API body and response (`zaapId`, `messageId`, `id`). On official WhatsApp they work only inside the 24-hour window ([messages in the layer](https://developer.omni.z-api.io/z-api/messages/introduction.md)).
+Every row is `POST /v1/channels/{channelId}/messages` with `recipient.identifier` (digits with country code) and a `content` object; the response is `{"messageId": "..."}` instead of Z-API's `zaapId`, `messageId` and `id`. Bodies per type: `omni-messages`. On `META_WHATSAPP` every free-form type works only inside the 24-hour window; `Z_API_WHATSAPP` has no window.
 
-| Z-API route | Layer | Native `content.type` (use `omni-messages`) |
+| Z-API route | Native `content.type` | Notes |
 |---|---|---|
-| `POST /send-text` | Yes ([send text](https://developer.omni.z-api.io/z-api/messages/send-text.md)); `editMessageId` is listed there but editing is not supported (limitations) | `TEXT` |
-| `POST /send-image` | Yes | `IMAGE` |
-| `POST /send-audio` | Yes | `AUDIO` |
-| `POST /send-video` | Yes | `VIDEO` |
-| `POST /send-document/{extension}` | Yes | `DOCUMENT`, marked in development |
-| `POST /send-sticker` | Yes | `STICKER` |
-| `POST /send-link` | Yes | No link-preview type listed; send the link in a `TEXT` |
-| `POST /send-contact` | Yes | `CONTACT` |
-| `POST /send-reaction`, `POST /send-remove-reaction` | Yes | `REACTION`, marked in development |
-| Reply (`messageId` in the body of a send) | Yes, on text, image, audio, video, document, sticker and contact ([reply message](https://developer.omni.z-api.io/z-api/messages/reply-message.md)); `privateAnswer` in groups is not supported | Not described for the native API |
-| `POST /send-button-actions` | Yes | `INTERACTIVE_ACTION` (URL and call) |
-| `POST /send-button-list` | Yes | `INTERACTIVE_BUTTON` (quick replies) |
-| `POST /send-button-pix` | Yes | No native type listed |
-| `POST /send-carousel` | Yes | No free-form type listed; carousels exist as templates (`omni-templates`) |
-| `POST /send-catalog`, `POST /send-product` | Yes | `CATALOG`, `PRODUCT`, marked in development |
-| `POST /send-location` | Not in the layer | `LOCATION` |
-| `POST /send-poll` | Not supported on the official API | The QR code channel page says polls are supported, but no native poll page exists; do not invent a body |
-| `POST /send-gif`, `POST /send-ptv`, `POST /forward-message`, `POST /pin-message`, `POST /send-event` | Not supported on the official API | None |
-| `POST /send-button-otp` | Only as a template | `TEMPLATE` with the authentication model (`omni-templates`) |
-| `DELETE /messages` | Not supported on the official API | None |
-| `POST /read-message` | Not in the layer; not on the limitations page | Not described |
+| `POST /send-text` | `TEXT`, `body.message` | `editMessageId` has no native field; no edit route is documented |
+| `POST /send-image` | `IMAGE`, `attachments[].url`, optional `caption` | Host base64 images and send the URL |
+| `POST /send-audio` | `AUDIO`, `attachments[].url` | |
+| `POST /send-video` | `VIDEO`, `attachments[].url`, optional `caption` | |
+| `POST /send-document/{extension}` | `DOCUMENT`, marked in development | Until it is available, send a link in a `TEXT` |
+| `POST /send-sticker` | `STICKER`, WebP URL | |
+| `POST /send-link` | `TEXT` with the link | No link-preview type listed |
+| `POST /send-location` | `LOCATION`, `latitude` and `longitude` as strings | |
+| `POST /send-contact` | `CONTACT`, `name` and `phones[]` | |
+| `POST /send-reaction`, `POST /send-remove-reaction` | `REACTION`, marked in development | |
+| Reply (`messageId` in the body of a send) | Not described for the native API | Drop it and say so |
+| `POST /send-button-actions` | `INTERACTIVE_ACTION` (URL and call) | |
+| `POST /send-button-list` | `INTERACTIVE_BUTTON` (up to 3 quick replies) | Longer lists: `INTERACTIVE_LIST`, marked in development |
+| `POST /send-button-pix` | None listed | |
+| `POST /send-carousel` | No free-form type; carousels exist as templates (`omni-templates`) | |
+| `POST /send-catalog`, `POST /send-product` | `CATALOG`, `PRODUCT`, marked in development | |
+| `POST /send-poll` | None documented | Not supported on `META_WHATSAPP`; the QR code channel supports polls ([message support](https://developer.omni.z-api.io/channels/message-support.md)), but no native poll body is documented: do not invent one |
+| `POST /send-button-otp` | `TEMPLATE` with the authentication model (`omni-templates`) | Official only |
+| `DELETE /messages` | None | The API cannot delete a sent message on any channel ([message support](https://developer.omni.z-api.io/channels/message-support.md)) |
+| `POST /send-gif`, `POST /send-ptv`, `POST /forward-message`, `POST /pin-message`, `POST /send-event`, `POST /read-message` | None | No native route documented |
+| First message to a customer who has not written in 24 hours | `META_WHATSAPP`: `TEMPLATE`; `Z_API_WHATSAPP`: any type | Meta charges templates |
 
 ## Instance and connection
 
-None of these are in the layer. Use the Omni panel or the native channel endpoints (`omni-core`).
+The channel replaces the instance. Use the Omni panel or the native channel endpoints (`omni-core`, `omni-onboarding`).
 
 | Z-API route | On Omni |
 |---|---|
 | `GET /status` | `GET /v1/channels/{channelId}`: check `phoneConnected` or `whatsappConnected` and `paymentStatus` ([get channel](https://developer.omni.z-api.io/channels/get-channel.md)) |
-| `GET /qr-code`, `/qr-code/image`, `GET /phone-code/{phone}` | QR code channel: the connection SDK shows the QR code, or your own UI through `getQRCode` ([connect WhatsApp Web](https://developer.omni.z-api.io/connect/whatsapp-web.md)). Official: Meta signup ([connect Meta WhatsApp](https://developer.omni.z-api.io/connect/meta-whatsapp.md)). No phone-code page |
+| `GET /qr-code`, `/qr-code/image`, `GET /phone-code/{phone}` | QR code channel: the connection SDK with your `getQRCode` backend route ([connect WhatsApp Web](https://developer.omni.z-api.io/connect/whatsapp-web.md)). Official: Meta signup ([connect Meta WhatsApp](https://developer.omni.z-api.io/connect/meta-whatsapp.md)). No phone-code page |
 | `GET /disconnect` | Documented only for `META_WHATSAPP` ([disconnect](https://developer.omni.z-api.io/channels/disconnect.md)) |
 | `GET /restart`, instance settings (profile name, picture, auto-read, call rejection) | Not described |
 | `POST /queue`, `DELETE /queue/{zaapId}` | Not described |
@@ -48,10 +48,10 @@ None of these are in the layer. Use the Omni panel or the native channel endpoin
 
 | Z-API route | On Omni |
 |---|---|
-| `PUT /update-every-webhooks` and the per-event update routes | Layer: set the URL in the Omni dashboard. Native: `POST /v1/channels/{channelId}/webhooks` with `payloadFormat` `Z_API` to keep the Z-API payload ([create webhook](https://developer.omni.z-api.io/webhooks/create-webhook.md)); ENTERPRISE role |
+| `PUT /update-every-webhooks` and the per-event update routes | `POST /v1/channels/{channelId}/webhooks` with `payloadFormat` `Z_API` to keep the Z-API payload ([create webhook](https://developer.omni.z-api.io/webhooks/create-webhook.md)) |
 
 ## Contacts, chats, groups, business, status, newsletters, communities, calls, privacy
 
-Not supported on the official API, except some group and business-profile routes marked "in development". The full table, route by route, is on the [limitations](https://developer.omni.z-api.io/z-api/limitations.md) page. That page is about the official API; for a QR code channel the docs say nothing either way, so do not promise these routes there.
+No native route is documented for any of these on either channel. [Message support](https://developer.omni.z-api.io/channels/message-support.md) does not mention groups; do not promise them.
 
-Includes `GET /phone-exists/{phone}`: not supported, so code that checked a number before sending needs another guard (for example, handle the failed status on the webhook).
+Includes `GET /phone-exists/{phone}`: no equivalent, so code that checked a number before sending needs another guard (for example, handle the failed status on the webhook).
