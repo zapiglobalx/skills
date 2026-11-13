@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.0
+
+- `omni-gohighlevel`: messaging HighLevel contacts through Omni, with HighLevel's MCP server for the CRM side; what each channel type allows (Meta's official API, QR code connection, Instagram, Messenger, Telegram); consent and DND; appointment reminders with buttons; recording each send on the contact; disconnected channels. Not affiliated with or endorsed by HighLevel.
+- Test scenarios: 11 in `tests/omni-gohighlevel.md` (one sends on the test account and a HighLevel test account; the rest need no credentials).
+
 ## 1.3.0
 
 The Omni docs no longer describe the Z-API compatibility layer (`zapi.omni.z-api.io`): on 2026-11-12 the index lists no `z-api/` page, and those URLs, including the Z-API limitations page, open the general introduction.

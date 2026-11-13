@@ -52,8 +52,9 @@ Version 1.3.0. Every skill links each endpoint, field and limit to its official 
 | [`omni-instagram`](skills/omni-instagram/SKILL.md) | Instagram Direct on Omni: which accounts can connect, the username as recipient, text and media limits, unsupported types and what to send instead, the 24-hour window and the human agent tag, no templates, adding Instagram to a WhatsApp bot |
 | [`omni-otp-verification`](skills/omni-otp-verification/SKILL.md) | Verification codes on official WhatsApp: the AUTHENTICATION template (copy code, one-tap, zero-tap, expiry, send TTL), sending a fresh code, and a safe verify side (hashing, expiry, attempts, resend and abuse limits) |
 | [`omni-marketing-campaigns`](skills/omni-marketing-campaigns/SKILL.md) | WhatsApp marketing campaigns on the official connection: opt-in and opt-out, choosing the template model (coupon, limited-time offer, carousel, products), Meta's cost, sending to a list in batches without duplicates, stopping on restrictions, measuring clicks |
+| [`omni-gohighlevel`](skills/omni-gohighlevel/SKILL.md) | Messaging HighLevel contacts through Omni: picking contacts with consent through HighLevel's MCP server, appointment reminders with buttons, follow-ups, hand-off to a person, and recording each send on the contact. Works with HighLevel; not affiliated with or endorsed by HighLevel |
 
-Coming next: chatbot on Omni; Omni with n8n, HubSpot and HighLevel; migrating to Omni from other WhatsApp API providers besides WAHA and Evolution API.
+Coming next: chatbot on Omni; Omni with n8n and HubSpot; migrating to Omni from other WhatsApp API providers besides WAHA and Evolution API.
 
 ## Credentials
 
@@ -78,6 +79,7 @@ Skills read credentials from environment variables and never write them into cod
 | `omni-instagram` | `OMNI_SECRET_KEY` |
 | `omni-otp-verification` | `OMNI_SECRET_KEY`; a secret of the user's app to hash codes |
 | `omni-marketing-campaigns` | `OMNI_SECRET_KEY` |
+| `omni-gohighlevel` | `OMNI_SECRET_KEY` and `OMNI_CHANNEL_ID`; the HighLevel side uses HighLevel's MCP server with OAuth, so no HighLevel key is stored |
 
 No skill routes traffic through a third-party service: the agent communicates directly with the Z-API API.
 
