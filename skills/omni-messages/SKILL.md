@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Needs network access to api.omni.z-api.io and a Z-API Omni account with at least one connected channel. Builds on omni-core.
 metadata:
   author: Z-API
-  version: "1.0.0"
+  version: "1.0.1"
   homepage: https://developer.omni.z-api.io
 ---
 
@@ -116,7 +116,7 @@ On official WhatsApp ([conversation window](https://developer.omni.z-api.io/conv
 - Each customer message opens a 24-hour window, and each new customer message restarts it.
 - Inside the window you can send any free-form type.
 - After 24 hours without a customer message, free-form messages are rejected. Only an approved template can go out (`omni-templates`). When the customer replies to the template, a new window opens.
-- A customer who arrives from a Click-to-WhatsApp ad or a Facebook page CTA button gets a 72-hour window.
+- A customer who arrives from a Click-to-WhatsApp ad on the WhatsApp app for Android or iOS, and gets your reply within the 24 hours, also opens a free entry window of up to 7 days (a maximum, not a guarantee). It changes the cost, not the rule: free-form messages still need the 24-hour window, and once it closes you send a template, which is free while the entry window is open ([conversation window](https://developer.omni.z-api.io/conversation-window.md)).
 
 On Instagram and Messenger the window is 24 hours, extended to 7 days with the *human agent tag* ([channels overview](https://developer.omni.z-api.io/channels/overview.md)).
 
@@ -124,7 +124,7 @@ On Instagram and Messenger the window is 24 hours, extended to 7 days with the *
 
 ## Cost
 
-- **Official WhatsApp.** Meta charges for delivered templates. The rate depends on the template category and the recipient's country ([billing](https://developer.omni.z-api.io/whatsapp-official/billing.md)). Free-form messages inside an open window are not charged by Meta ([conversation window](https://developer.omni.z-api.io/conversation-window.md)). Meta's fees are paid directly to Meta, with a payment method set up in the business portfolio of the WhatsApp account ([payment](https://developer.omni.z-api.io/whatsapp-official/payment.md)). The official connection goes through a BSP (Business Solution Provider).
+- **Official WhatsApp.** Meta charges for delivered templates. The rate depends on the template category and the recipient's country ([billing](https://developer.omni.z-api.io/whatsapp-official/billing.md)). Free-form messages inside the window are Service messages: the first 1,000 a month per business number are free, and from October 1, 2026 the ones beyond that are charged per delivered message. Being inside the window no longer makes a message free ([billing](https://developer.omni.z-api.io/whatsapp-official/billing.md), [conversation window](https://developer.omni.z-api.io/conversation-window.md)). Meta's fees are paid directly to Meta, with a payment method set up in the business portfolio of the WhatsApp account ([payment](https://developer.omni.z-api.io/whatsapp-official/payment.md)). The official connection goes through a BSP (Business Solution Provider).
 - **WhatsApp by QR code.** No window and no templates, so there are no template fees. There is no cost per message.
 - **Z-API Omni.** Outside Brazil, US$29 per number per month. In Brazil the price is in reais, as listed on [omni.z-api.io](https://omni.z-api.io). Each channel is added to the account subscription, and a channel added mid-cycle is charged pro rata on the next invoice ([subscribe channel](https://developer.omni.z-api.io/channels/subscribe-channel.md)).
 

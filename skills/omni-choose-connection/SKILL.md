@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Needs no API call and no credentials; reads only the Z-API Omni docs. The channel it recommends is created later with omni-onboarding.
 metadata:
   author: Z-API
-  version: "1.0.0"
+  version: "1.0.1"
   homepage: https://developer.omni.z-api.io
 ---
 
@@ -103,7 +103,8 @@ Once the user agrees, write down the decision in one short block (channels, type
 
 ## The docs disagree
 
-- The [conversation window](https://developer.omni.z-api.io/conversation-window.md) page calls messages inside the window free and unlimited and gives 72 hours for Click-to-WhatsApp entries. The [billing](https://developer.omni.z-api.io/whatsapp-official/billing.md) page, which carries the October 1, 2026 changes, limits free Service messages to 1,000 a month and gives up to 7 days for the free entry window. Use the billing page for cost and say that the two pages differ.
+- The [24-hour window](https://developer.omni.z-api.io/whatsapp-official/24h-window.md) page's table says Meta does not charge for a message inside the 24 hours. The [billing](https://developer.omni.z-api.io/whatsapp-official/billing.md) page says that from October 1, 2026, Service messages beyond 1,000 a month and Utility templates inside the window are charged. Use the billing page for cost.
+- The [channels overview](https://developer.omni.z-api.io/channels/overview.md) says the 24-hour window is exclusive to the Meta Cloud API and the other channels have none, while its own table gives Instagram and Messenger 24 hours, or 7 days with the human agent tag. This skill follows the table.
 
 ## Not in the docs
 

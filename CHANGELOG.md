@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.1
+
+The Omni conversation-window page now matches the billing page (1,000 free Service messages a month; a free entry window of up to 7 days). Checked on 2026-11-16.
+
+- `omni-messages` 1.0.1: the Click-to-WhatsApp entry window is up to 7 days and changes only the cost; free-form messages still need the 24-hour window. Messages inside the window are no longer described as free: Service messages beyond 1,000 a month are charged from October 1, 2026.
+- `omni-templates` 1.0.1: Utility templates inside the window are charged from October 1, 2026; the free entry window replaces the 72-hour window and leaves out Facebook page CTAs, WhatsApp Desktop and Web entries and Meta Business Agent messages.
+- `omni-choose-connection` 1.0.1: "The docs disagree" drops the conversation-window conflict, now fixed, and lists the two that remain (the 24-hour window page against billing, and the channels overview text against its table).
+
 ## 1.4.0
 
 - `omni-gohighlevel`: messaging HighLevel contacts through Omni, with HighLevel's MCP server for the CRM side; what each channel type allows (Meta's official API, QR code connection, Instagram, Messenger, Telegram); consent and DND; appointment reminders with buttons; recording each send on the contact; disconnected channels. Not affiliated with or endorsed by HighLevel.

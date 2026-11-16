@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Needs network access to api.omni.z-api.io, a Z-API Omni account and an official WhatsApp channel (META_WHATSAPP) linked to a WhatsApp Business Account. Builds on omni-core.
 metadata:
   author: Z-API
-  version: "1.0.0"
+  version: "1.0.1"
   homepage: https://developer.omni.z-api.io
 ---
 
@@ -34,7 +34,7 @@ Templates exist only on the official WhatsApp channel (`META_WHATSAPP`). WhatsAp
 
 | Category | Use for | Cost on official WhatsApp |
 |---|---|---|
-| `UTILITY` | Follows a customer action: order confirmation, delivery status, invoice, appointment change | Cheapest. Free when sent inside an open window, charged outside |
+| `UTILITY` | Follows a customer action: order confirmation, delivery status, invoice, appointment change | Cheapest. From October 1, 2026, charged inside the 24-hour window too ([billing](https://developer.omni.z-api.io/whatsapp-official/billing.md)) |
 | `MARKETING` | Promotions, offers, campaigns, re-engagement | Highest. Charged per message |
 | `AUTHENTICATION` | One-time codes, login checks. Meta writes the text | Charged per message, by country |
 
@@ -42,7 +42,7 @@ Sources: [anatomy](https://developer.omni.z-api.io/templates/anatomy.md), [conve
 
 - Meta charges for **delivered** templates. The rate depends on category and the recipient's country. Do not quote rates from memory; point to the [billing](https://developer.omni.z-api.io/whatsapp-official/billing.md) page.
 - Meta's fees are paid directly to Meta, through the payment method on the WhatsApp account ([payment](https://developer.omni.z-api.io/whatsapp-official/payment.md)). The official connection goes through a BSP (Business Solution Provider).
-- Inside a 72-hour window opened by a Click-to-WhatsApp ad or a Facebook page CTA, all messages are free, marketing templates included ([conversation window](https://developer.omni.z-api.io/conversation-window.md)).
+- In the free entry window opened by a Click-to-WhatsApp ad on the WhatsApp app for Android or iOS (up to 7 days, not guaranteed), Marketing, Utility, Authentication and Service messages are free, except Meta Business Agent messages. Entries from WhatsApp Desktop or Web do not count ([conversation window](https://developer.omni.z-api.io/conversation-window.md), [billing](https://developer.omni.z-api.io/whatsapp-official/billing.md)).
 - The Z-API Omni subscription is separate: outside Brazil, US$29 per number per month; in Brazil the price is in reais, as listed on [omni.z-api.io](https://omni.z-api.io). The QR code connection has no cost per message.
 - Picking the wrong category can get a template refused. `allow_category_change: true` lets the reviewer re-categorize instead of refusing ([anatomy](https://developer.omni.z-api.io/templates/anatomy.md)).
 
