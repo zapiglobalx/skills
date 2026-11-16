@@ -7,6 +7,7 @@ The Omni conversation-window page now matches the billing page (1,000 free Servi
 - `omni-messages` 1.0.1: the Click-to-WhatsApp entry window is up to 7 days and changes only the cost; free-form messages still need the 24-hour window. Messages inside the window are no longer described as free: Service messages beyond 1,000 a month are charged from October 1, 2026.
 - `omni-templates` 1.0.1: Utility templates inside the window are charged from October 1, 2026; the free entry window replaces the 72-hour window and leaves out Facebook page CTAs, WhatsApp Desktop and Web entries and Meta Business Agent messages.
 - `omni-choose-connection` 1.0.1: "The docs disagree" drops the conversation-window conflict, now fixed, and lists the two that remain (the 24-hour window page against billing, and the channels overview text against its table).
+- `tests/omni-messages.md`: scenario 9 expects the Service tier instead of "free inside the window".
 
 ## 1.4.0
 
