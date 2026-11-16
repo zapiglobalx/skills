@@ -1,5 +1,7 @@
 # Z-API skills
 
+[![skills.sh](https://skills.sh/b/zapiglobalx/skills)](https://skills.sh/zapiglobalx/skills)
+
 Official [Z-API](https://developer.z-api.io) and [Z-API Omni](https://developer.omni.z-api.io) skills for AI agents. A skill is a folder containing a `SKILL.md` that teaches an agent how to perform a task: send a message, configure a webhook, or verify a signature. They work with Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, OpenCode, Windsurf, and any agent compatible with the `SKILL.md` format.
 
 ## Install
@@ -16,6 +18,8 @@ A single skill:
 npx skills add zapiglobalx/skills --skill zapi-send-messages
 ```
 
+Browse the catalog and install counts on [skills.sh/zapiglobalx/skills](https://skills.sh/zapiglobalx/skills).
+
 ## Which one to use
 
 | You use | API address | Start with |
@@ -28,7 +32,7 @@ npx skills add zapiglobalx/skills --skill zapi-send-messages
 
 ## Catalog
 
-Version 1.3.0. Every skill links each endpoint, field and limit to its official page, and ships test scenarios in `tests/<name>.md`.
+Version 1.4.0. Every skill links each endpoint, field and limit to its official page, and ships test scenarios in `tests/<name>.md`.
 
 | Skill | What it teaches |
 | --- | --- |
@@ -93,7 +97,7 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md). Every new skill includes an official do
 
 ## Summary
 
-Install with `npx skills add zapiglobalx/skills`. Twenty skills, version 1.3.0: `zapi-core`, `zapi-instance`, `zapi-send-messages`, `zapi-webhooks` and `zapi-partner-instances` for the classic Z-API (`api.z-api.io`); `omni-core`, `omni-messages`, `omni-templates`, `omni-onboarding`, `omni-flows`, `omni-choose-connection`, `omni-security-hardening`, `omni-reliability`, `omni-troubleshooting`, `omni-instagram`, `omni-otp-verification` and `omni-marketing-campaigns` for Z-API Omni (`api.omni.z-api.io`); `omni-migration-from-z-api` to move from one to the other; `omni-migration-from-waha` and `omni-migration-from-evolution-api` to move from those self-hosted APIs to Omni. Every claim in a skill links to the official docs, every skill ships test scenarios, and no skill routes your traffic through a third party. Credentials come from environment variables only. Security issues: see [SECURITY.md](SECURITY.md). Licensed under Apache-2.0.
+Install with `npx skills add zapiglobalx/skills`. Twenty-one skills, version 1.4.0: `zapi-core`, `zapi-instance`, `zapi-send-messages`, `zapi-webhooks` and `zapi-partner-instances` for the classic Z-API (`api.z-api.io`); `omni-core`, `omni-messages`, `omni-templates`, `omni-onboarding`, `omni-flows`, `omni-choose-connection`, `omni-security-hardening`, `omni-reliability`, `omni-troubleshooting`, `omni-instagram`, `omni-otp-verification`, `omni-marketing-campaigns` and `omni-gohighlevel` for Z-API Omni (`api.omni.z-api.io`); `omni-migration-from-z-api` to move from one to the other; `omni-migration-from-waha` and `omni-migration-from-evolution-api` to move from those self-hosted APIs to Omni. Every claim in a skill links to the official docs, every skill ships test scenarios, and no skill routes your traffic through a third party. Credentials come from environment variables only. Security issues: see [SECURITY.md](SECURITY.md). Licensed under Apache-2.0.
 
 ## Trademarks
 
