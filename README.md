@@ -28,7 +28,7 @@ npx skills add zapiglobalx/skills --skill zapi-send-messages
 
 ## Catalog
 
-Version 1.3.0. Every skill links each endpoint, field and limit to its official page, and ships test scenarios in `tests/<name>.md`.
+Version 1.5.0. Every skill links each endpoint, field and limit to its official page, and ships test scenarios in `tests/<name>.md`.
 
 | Skill | What it teaches |
 | --- | --- |
@@ -37,6 +37,11 @@ Version 1.3.0. Every skill links each endpoint, field and limit to its official 
 | [`zapi-send-messages`](skills/zapi-send-messages/SKILL.md) | Text, image, audio, video, document, link, location, contact, reaction; reply, forward, edit, delete, pin, mark as read; `@lid`, formats, delays and responsible-sending rules |
 | [`zapi-webhooks`](skills/zapi-webhooks/SKILL.md) | Every webhook type, configuration endpoints, filters, payloads, and treating end-user text as data |
 | [`zapi-partner-instances`](skills/zapi-partner-instances/SKILL.md) | For Z-API integrator partners: creating, subscribing, listing, canceling and deleting customers' instances, calls, proxy and its failure webhook, the connection SDK inside the partner's product, and the post-paid cycle |
+| [`zapi-business-catalog-and-labels`](skills/zapi-business-catalog-and-labels/SKILL.md) | WhatsApp Business app numbers: labels and notes on chats, products, cart and collections, sending a product or the catalog, and the business profile (description, websites, categories, opening hours) |
+| [`zapi-newsletters-communities-status`](skills/zapi-newsletters-communities-status/SKILL.md) | WhatsApp channels (`@newsletter`), communities and their announcement group with the anti-scam protection, and posting and replying to status |
+| [`zapi-calls`](skills/zapi-calls/SKILL.md) | WhatsApp calls: a short call with recorded audio, live voice and video through the call SDK, SIP for an existing PABX, call events with duration and recording, rejecting calls |
+| [`zapi-security-hardening`](skills/zapi-security-hardening/SKILL.md) | Securing a Z-API integration: the token in the URL, turning on the Client-Token without an outage, IP restriction, two-factor login, webhook path secrets, the WhatsApp PIN on mobile instances, what to do after a leak |
+| [`zapi-mobile-registration`](skills/zapi-mobile-registration/SKILL.md) | Registering the user's own number on a mobile instance (code, captcha, PIN, transfer), requesting a review of a banned number, recognizing a shadowban; no help evading bans |
 | [`omni-core`](skills/omni-core/SKILL.md) | Secret Key, channels, sending, the 24-hour window and templates, webhooks, and HMAC verification. Read first for any Omni task |
 | [`omni-messages`](skills/omni-messages/SKILL.md) | Free-form messages per channel: accepted types on each channel, the 24-hour window on official WhatsApp, delivery confirmation by webhook, cost |
 | [`omni-templates`](skills/omni-templates/SKILL.md) | WABAs, template models, categories and cost, approval and its webhook, validation rules with error codes, sending with parameters |
@@ -53,8 +58,15 @@ Version 1.3.0. Every skill links each endpoint, field and limit to its official 
 | [`omni-otp-verification`](skills/omni-otp-verification/SKILL.md) | Verification codes on official WhatsApp: the AUTHENTICATION template (copy code, one-tap, zero-tap, expiry, send TTL), sending a fresh code, and a safe verify side (hashing, expiry, attempts, resend and abuse limits) |
 | [`omni-marketing-campaigns`](skills/omni-marketing-campaigns/SKILL.md) | WhatsApp marketing campaigns on the official connection: opt-in and opt-out, choosing the template model (coupon, limited-time offer, carousel, products), Meta's cost, sending to a list in batches without duplicates, stopping on restrictions, measuring clicks |
 | [`omni-gohighlevel`](skills/omni-gohighlevel/SKILL.md) | Messaging HighLevel contacts through Omni: picking contacts with consent through HighLevel's MCP server, appointment reminders with buttons, follow-ups, hand-off to a person, and recording each send on the contact. Works with HighLevel; not affiliated with or endorsed by HighLevel |
+| [`omni-multichannel-replies`](skills/omni-multichannel-replies/SKILL.md) | One bot on several Omni channels: what each channel accepts, the fallback when it does not (lists, location, call buttons, stickers), identifiers and windows per channel, and why a `200` is not proof of delivery |
+| [`omni-billing-and-account-health`](skills/omni-billing-and-account-health/SKILL.md) | What official WhatsApp costs (categories, free cases, the 2026 changes, BRL billing), Meta's payment method, Omni's billing events, restriction notices, and a check before any send to many people |
+| [`omni-appointment-reminders`](skills/omni-appointment-reminders/SKILL.md) | Appointment reminders: the UTILITY template with Confirm, Reschedule and Cancel, payloads per appointment, free-form buttons inside the window or on the QR code channel, timing without duplicates, opt-out |
+| [`omni-cart-recovery`](skills/omni-cart-recovery/SKILL.md) | Abandoned carts and post-purchase: which template model and category fits each moment (reminder, coupon, checkout button, Pix invoice, order updates), consent, timing and stopping rules |
+| [`omni-migration-from-twilio`](skills/omni-migration-from-twilio/SKILL.md) | Moving WhatsApp from Twilio: sends, Content Templates, status callbacks, inbound fields and the signature check mapped to Omni, moving the number between providers in Meta's business portfolio, cutover and rollback |
+| [`omni-mcp`](skills/omni-mcp/SKILL.md) | Connecting an AI client to Omni's MCP server: setup per client, the tools, who can create templates and flows through it, workspace rules, IP allowlist effects, revoking, and when to use REST instead |
+| [`omni-whatsapp-calling`](skills/omni-whatsapp-calling/SKILL.md) | WhatsApp calling on Omni as documented today: the call permission request template and the customer's answer; placing calls is not in the docs yet |
 
-Coming next: chatbot on Omni; Omni with n8n and HubSpot; migrating to Omni from other WhatsApp API providers besides WAHA and Evolution API.
+Coming next: chatbot on Omni; Omni with n8n and HubSpot; migrating to Omni from other WhatsApp API providers besides WAHA, Evolution API and Twilio.
 
 ## Credentials
 
@@ -93,7 +105,7 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md). Every new skill includes an official do
 
 ## Summary
 
-Install with `npx skills add zapiglobalx/skills`. Twenty skills, version 1.3.0: `zapi-core`, `zapi-instance`, `zapi-send-messages`, `zapi-webhooks` and `zapi-partner-instances` for the classic Z-API (`api.z-api.io`); `omni-core`, `omni-messages`, `omni-templates`, `omni-onboarding`, `omni-flows`, `omni-choose-connection`, `omni-security-hardening`, `omni-reliability`, `omni-troubleshooting`, `omni-instagram`, `omni-otp-verification` and `omni-marketing-campaigns` for Z-API Omni (`api.omni.z-api.io`); `omni-migration-from-z-api` to move from one to the other; `omni-migration-from-waha` and `omni-migration-from-evolution-api` to move from those self-hosted APIs to Omni. Every claim in a skill links to the official docs, every skill ships test scenarios, and no skill routes your traffic through a third party. Credentials come from environment variables only. Security issues: see [SECURITY.md](SECURITY.md). Licensed under Apache-2.0.
+Install with `npx skills add zapiglobalx/skills`. Thirty-three skills, version 1.5.0: `zapi-core`, `zapi-instance`, `zapi-send-messages`, `zapi-webhooks`, `zapi-partner-instances`, `zapi-business-catalog-and-labels`, `zapi-newsletters-communities-status`, `zapi-calls`, `zapi-security-hardening` and `zapi-mobile-registration` for the classic Z-API (`api.z-api.io`); `omni-core`, `omni-messages`, `omni-templates`, `omni-onboarding`, `omni-flows`, `omni-choose-connection`, `omni-security-hardening`, `omni-reliability`, `omni-troubleshooting`, `omni-instagram`, `omni-otp-verification`, `omni-marketing-campaigns`, `omni-gohighlevel`, `omni-multichannel-replies`, `omni-billing-and-account-health`, `omni-appointment-reminders`, `omni-cart-recovery`, `omni-mcp` and `omni-whatsapp-calling` for Z-API Omni (`api.omni.z-api.io`); `omni-migration-from-z-api` to move from one to the other; `omni-migration-from-waha`, `omni-migration-from-evolution-api` and `omni-migration-from-twilio` to move from those APIs to Omni. Every claim in a skill links to the official docs, every skill ships test scenarios, and no skill routes your traffic through a third party. Credentials come from environment variables only. Security issues: see [SECURITY.md](SECURITY.md). Licensed under Apache-2.0.
 
 ## Trademarks
 
