@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.5.0
+
+Twelve new skills: seven for Z-API Omni and five for the classic Z-API.
+
+- `omni-multichannel-replies`: one bot on several Omni channels; the support table per channel with its conditions, which refusals come back as `422` and which as `200` that never arrive, the fallback for each unsupported type, identifiers and windows per channel.
+- `omni-billing-and-account-health`: Meta's per-message categories, free cases and the 2026-10-01 changes, the docs' Brazil prices with their date, BRL billing deadlines, adding the payment method, Omni's `BILLING_*` events, `ACCOUNT_RESTRICTION`, Utility misuse restrictions, and a check before sending to many people.
+- `omni-appointment-reminders`: the UTILITY template with quick replies and a payload per appointment, free-form buttons inside the window or on the QR code and Telegram channels, scheduling without duplicates, handling the answer and opt-outs.
+- `omni-cart-recovery`: which template model and category fits each moment of a store (cart reminder, coupon, checkout button, Pix invoice, order updates), the model rules that cause refusals, consent, timing and stopping rules; free-form order messages flagged as not in the API yet.
+- `omni-migration-from-twilio`: inventory of Twilio calls, sends and Content Templates mapped to Omni, template sync on the WABA, inbound fields and `X-Twilio-Signature` to the Omni HMAC check, moving the number between providers, cutover and rollback. Twilio facts link Twilio's docs.
+- `omni-mcp`: Omni's MCP server: client setup, tools by permission, the four conditions for write access, workspace rules, IP allowlist behaviour, revoking and auditing, MCP versus REST.
+- `omni-whatsapp-calling` (0.1.0): the call permission request template and the customer's answer; says placing calls through Omni is not documented.
+- `zapi-business-catalog-and-labels`: labels, notes, products, cart, collections (whose id changes on edit), sending products and the catalog, and the business profile; flags the unclear price unit.
+- `zapi-newsletters-communities-status`: channels, communities and the announcement group (50 groups, 5,000 people), the anti-scam protection and its webhook, status posts and replies; flags that no channel publish route is documented.
+- `zapi-calls`: `send-call` (15 s maximum), the call SDK and its single-use token, SIP credentials and the unencrypted example, call events with duration and recording, rejecting calls.
+- `zapi-security-hardening`: token on the server, enabling the Client-Token without an outage, IP restriction, two-factor login, webhook path secrets, PIN and recovery email on mobile instances, leak response and a review checklist.
+- `zapi-mobile-registration`: the mobile instance registration flow (availability, code, captcha answered by the owner, PIN, transfer), review requests for banned numbers, shadowban; refuses help with ban evasion.
+- Test scenarios: 10 in `tests/omni-multichannel-replies.md`, 10 in `tests/omni-billing-and-account-health.md`, 10 in `tests/omni-appointment-reminders.md`, 9 in `tests/omni-cart-recovery.md`, 9 in `tests/omni-migration-from-twilio.md`, 9 in `tests/omni-mcp.md`, 7 in `tests/omni-whatsapp-calling.md`, 9 in `tests/zapi-business-catalog-and-labels.md`, 9 in `tests/zapi-newsletters-communities-status.md`, 8 in `tests/zapi-calls.md`, 8 in `tests/zapi-security-hardening.md` and 9 in `tests/zapi-mobile-registration.md`. None needs credentials.
+
 ## 1.4.0
 
 - `omni-gohighlevel`: messaging HighLevel contacts through Omni, with HighLevel's MCP server for the CRM side; what each channel type allows (Meta's official API, QR code connection, Instagram, Messenger, Telegram); consent and DND; appointment reminders with buttons; recording each send on the contact; disconnected channels. Not affiliated with or endorsed by HighLevel.
